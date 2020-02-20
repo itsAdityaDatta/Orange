@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%>
+
+        <div class="body">
+            <% posts2.reverse().forEach(function(post){ %>
+                <% let postTit = post.title.toLowerCase(); %>
+                <% postTit = postTit.replace(/\s/g, '-'); %>
+                <% let first = "/posts/"; %>
+                <% let postUrl = first.concat(postTit); %>
+            <a class="posts"  href= <%= postUrl %> >        
+                <div class='postsTitles'>
+                    <%= post.title %>
+                </div>
+                <% let str = post.matter; %>
+                <% let str2 = str.substring(0, 250); %>
+                <%= str2 %>
+                <% if(str.length > 200) { %>
+                ...
+                <% } %>
+            </a>
+            <%  }); %>
+            <a href="/compose" class='add'>+</a>
+        </div>
+        <br><br><br><br><br><br>
+
+
+<%- include('partials/footer'); -%>
+   
