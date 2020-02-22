@@ -1,7 +1,7 @@
 <%- include('partials/header'); -%>
 
         <div class="body">
-            <% posts2.reverse().forEach(function(post){ %>
+            <% posts2.slice().reverse().forEach(function(post){ %>
                 <% let postTit = post.title.toLowerCase(); %>
                 <% postTit = postTit.replace(/\s/g, '-'); %>
                 <% let first = "/posts/"; %>
@@ -11,16 +11,18 @@
                     <%= post.title %>
                 </div>
                 <% let str = post.matter; %>
-                <% let str2 = str.substring(0, 250); %>
+                <% let str2 = str.substring(0, 300); %>
+                <% if(str.length < 200){ %>
                 <%= str2 %>
+                <% } %>
                 <% if(str.length > 200) { %>
-                ...
+                <% let str3 = str2.concat('','...'); %>
+                <%= str3 %>
                 <% } %>
             </a>
             <%  }); %>
             <a href="/compose" class='add'>+</a>
-        </div>
-        <br><br><br><br><br><br>
+        </div><br><br>
 
 
 <%- include('partials/footer'); -%>
