@@ -1,6 +1,5 @@
 <html>
     <head>
-        <title>deBlogger</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
@@ -94,7 +93,6 @@
 
         .posts{
             background-color: #ffffff;
-            border-bottom: 1.5px solid rgb(255, 100, 0);
             padding: 25px;
             padding-top: 0px;
             display: block;
@@ -120,7 +118,13 @@
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
             transform: translateX(-200px);
-        }   
+        }
+        
+        hr { 
+            border: 0;
+            height: 0.5px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
 
         @media screen and (max-width: 800px) {
             .navbar ul li.right, 
@@ -139,6 +143,7 @@
             }
         }
         </style>
+        <title><%= pageTitle %></title>
     </head>
     <body>
         <div class="header">
@@ -162,6 +167,7 @@
             </div>
         </div>
         <br>
+        <hr>
     </body><br><br><br><br><br>
     <div class='footer'>made with love</div>
     </html>

@@ -2,10 +2,9 @@
 
         <div class="body">
             <% posts2.slice().reverse().forEach(function(post){ %>
-                <% let postTit = post.title.toLowerCase(); %>
-                <% postTit = postTit.replace(/\s/g, '-'); %>
+                <% let postID = post._id; %>
                 <% let first = "/posts/"; %>
-                <% let postUrl = first.concat(postTit); %>
+                <% let postUrl = first.concat(postID); %>
             <a class="posts"  href= <%= postUrl %> >        
                 <div class='postsTitles'>
                     <%= post.title %>
