@@ -66,6 +66,7 @@ body{
     text-align: center;
     padding: 8px 12px;
     text-decoration: none;
+    border-right: 1px solid black;
 }
   
 .navbar li a:hover {
@@ -94,6 +95,12 @@ body{
     border: 1px solid rgb(110, 110,110);    
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 5px;
+
+}
+
+.inputs:focus{
+        outline: none !important;
+        border-color: rgb(255, 90, 0);
 }
 
 .inputs2{
@@ -105,6 +112,11 @@ body{
     resize: vertical;
     border: 1px solid rgb(110,110,110);
     margin-bottom: 10px;
+}
+
+.inputs2:focus{
+        outline: none !important;
+        border-color: rgb(255, 90, 0);
 }
 
 .composeHeading{
@@ -194,6 +206,37 @@ a {
 @media screen and (max-width: 800px) {
     .navbar ul li.right, 
     .navbar ul li {float: none;}
-    .navbar ul li a{padding: 6px 12px;}
-    .navbar {position: relative;}
+    .navbar ul li a{
+        padding: 6px 12px;
+        border-bottom: 1px solid black;
+    }
+    .navbar {
+        position: relative;
+    }
+
+    
 }
+    @media screen and (max-width: 1000px) {
+        .anim{
+            display: none !important;
+        }
+        .anim2{
+            display: none !important;
+        }
+    }
+        
+    .anim {
+        background-color: rgb(255, 90, 0);
+        display: inline-block;
+        height: 10px;
+        width: 400px;
+        transform: translateY(-50px) translateX(570px) rotateZ(-50deg);
+    }
+
+    .anim2 {
+        background-color: #333;
+        display: inline-block;
+        width: 400px;
+        height: 20px;
+        transform: translateY(-50px) translateX(200px) rotateZ(-50deg);
+    }

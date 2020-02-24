@@ -71,6 +71,7 @@
             text-align: center;
             padding: 8px 12px;
             text-decoration: none;
+            border-right: 1px solid black;
         }
         
         .navbar li a:hover {
@@ -123,14 +124,19 @@
         hr { 
             border: 0;
             height: 0.5px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0));
         }
 
         @media screen and (max-width: 800px) {
             .navbar ul li.right, 
             .navbar ul li {float: none;}
-            .navbar ul li a{padding: 6px 12px;}
-            .navbar {position: relative;}
+            .navbar ul li a{
+                padding: 6px 12px;
+                border-bottom: 1px solid black;
+            }
+            .navbar {
+                position: relative;
+            }
             .postsTitles{
                 font-size: 26px;
                 padding: 10px;
@@ -141,7 +147,39 @@
             body{
                 overflow-x: hidden;
             }
+            .anim{
+                display: none;
+            }
+            .anim2{
+                display: none;
+            }
         }
+
+    @media screen and (max-width: 1000px) {
+        .anim{
+            display: none !important;
+        }
+        .anim2{
+            display: none !important;
+        }
+    }
+        
+    .anim {
+        background-color: rgb(255, 90, 0);
+        display: inline-block;
+        height: 10px;
+        width: 400px;
+        transform: translateY(-50px) translateX(570px) rotateZ(-50deg);
+    }
+
+    .anim2 {
+        background-color: #333;
+        display: inline-block;
+        width: 400px;
+        height: 20px;
+        transform: translateY(-50px) translateX(200px) rotateZ(-50deg);
+    }
+
         </style>
         <title><%= pageTitle %></title>
     </head>
@@ -149,6 +187,7 @@
         <div class="header">
             <div class='headText'><small style="background-color: rgb(255,100,0);color: white;padding-left: 5px;padding-right: 5px;">de</small>Blogger</div>
             <div class='headFooter'>The only <span style="color:rgb(255,100,0)">Blogging Site</span> you'll need.</div>
+            <div class='anim'>.</div><div class='anim2'>.</div>
         </div>
         <div class='navbar'>
           <ul>
