@@ -27,7 +27,7 @@ body{
 .headText{
     font-size: 60px;
     color: black;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Handlee';
 }
 
 .headFooter{
@@ -164,7 +164,7 @@ body{
     font-size: 14px;
     padding: 15px;
     margin-bottom: 15px;
-    border-radius: 2px;
+    border-radius: 1px;
     font-family: 'Open Sans', sans-serif;
     border: 1px solid #e5e5e5;
 
@@ -230,6 +230,7 @@ a {
         display: inline-block;
         height: 10px;
         width: 400px;
+        color: rgb(240,240,250);
         transform: translateY(-50px) translateX(570px) rotateZ(-50deg);
     }
 
@@ -237,6 +238,7 @@ a {
         background-color: #333;
         display: inline-block;
         width: 400px;
+        color: #333;
         height: 20px;
         transform: translateY(-50px) translateX(200px) rotateZ(-50deg);
     }
