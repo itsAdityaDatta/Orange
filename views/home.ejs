@@ -1,7 +1,449 @@
-<%- include('partials/header'); -%>
+<html>
+    <head>
+        <script scr="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Handlee&display=swap" rel="stylesheet">
 
+        <style>
+        html{
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body{
+            margin: 0;
+        }
+
+        .body{
+            font-family: 'Open Sans', sans-serif;
+            display: block;
+            width: 90%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 60px;
+        }
+
+        .header{
+            display: block;
+            padding: 75px;
+            margin-top: -10;
+            background-color: rgb(240,240,250);
+            text-align: center;
+            cursor: default;
+        }
+
+        .headText{
+            font-size: 60px;
+            color: black;
+            font-family: 'Handlee';
+        }
+
+        .headFooter{
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            padding-top: 10px;
+        }
+
+        .navbar{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
+        z-index: 2;
+        background-color: #333;
+        font-size: 14px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+
+        .navbar li {
+            float: left;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-right: 1px solid black;
+        }
+        
+        .navbar li a:hover {
+            background-color: rgb(255, 125, 0);
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 2px;
+            background-color: #333;
+            color: white;
+            font-family: 'Indie Flower', cursive;
+            cursor: default;
+        }
+
+        .inputs{
+            width: 100%;
+            height: 40px;
+            padding: 5px;
+            padding-left: 10px;
+            font-size: 14px;
+            border: 1px solid rgb(110, 110,110);    
+            font-family: 'Open Sans', sans-serif;
+            margin-bottom: 5px;
+
+        }
+
+        .inputs:focus{
+                /* outline: none !important; */
+                /* border-color: rgb(255, 90, 0); */
+        }
+
+        .inputs2{
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 2px;
+            font-family: 'Open Sans', sans-serif;
+            resize: vertical;
+            border: 1px solid rgb(110,110,110);
+            margin-bottom: 10px;
+        }
+
+        .inputs2:focus{
+                /* outline: none !important; */
+                /* border-color: rgb(240, 120, 0); */
+        }
+
+        .composeHeading{
+            font-family: 'Abel', sans-serif;
+            font-size: 40px;
+            background-color: rgb(255, 125, 0);
+            color: white;
+            display: inline-block;
+            padding-left: 200px;
+            padding-right: 200px;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            transform: translateX(-200px);
+        }
+
+
+        .composeForm{
+            font-size: 18px;
+            font-family: 'Abel', sans-serif;
+
+        }
+
+        .composeButton{
+            color: #333;
+            background-color: white;
+            font-size: 20px;
+            font-family: 'Abel', sans-serif;
+            border: 1.5px solid rgb(255, 125, 0);
+            border-radius: 5px;
+            padding-left: 25px;
+            padding-right: 25px;
+            cursor: pointer;
+        }
+
+        .composeButton:hover{
+            transition-duration: 0.1s;
+            color:white;
+            background-color: rgb(255, 125, 0);
+        }
+
+        .posts{
+            background-color: #e5e5e5;
+            display: block;
+            overflow-x: hidden;
+            font-size: 14px;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-family: 'Open Sans', sans-serif;
+            border: 1px solid #e5e5e5;
+
+        }
+
+        .posts:hover{
+            transition-duration: 0.1s;
+            background-color: #ddd;
+        }
+
+
+        .postsTitles{
+            font-size: 26px;   
+            color: black;
+            font-family: 'Abel', sans-serif;
+            margin-top: -5px;
+            padding-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .add{
+            background-color: rgb(255, 125, 0);
+            color: white;
+            font-size: 32px;
+            padding-left: 15px;
+            padding-right: 15px;
+            /* border-radius: 10%; */
+            float: right;
+        }
+        .add:hover{
+            transition-duration: 0.1s;
+            background-color: rgb(255, 90, 0);
+        }
+
+        @media screen and (max-width: 800px) {
+            .navbar ul li.right, 
+            /* .navbar ul li {float: none;} */
+            .navbar ul li a{
+                padding: 6px 12px;
+                border-bottom: 1px solid black;
+            }
+
+            
+        }
+            @media screen and (max-width: 1000px) {
+                .anim{
+                    display: none !important;
+                }
+                .anim2{
+                    display: none !important;
+                }
+            }
+                
+            .anim {
+                background-color: rgb(255, 90, 0);
+                display: inline-block;
+                height: 10px;
+                width: 400px;
+                color: rgb(240,240,250);
+                transform: translateY(-50px) translateX(570px) rotateZ(-50deg);
+            }
+
+            .anim2 {
+                background-color: #333;
+                display: inline-block;
+                width: 400px;
+                color: #333;
+                height: 20px;
+                transform: translateY(-50px) translateX(200px) rotateZ(-50deg);
+            }
+
+            .loginClass{
+            
+            }
+
+        /* ________________________________________________________LOGIN FORM ______________________________________________________________*/
+            
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* style the container */
+        .container {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px 0 30px 0;
+        } 
+        
+        /* style inputs and link buttons */
+        input,
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            margin: 5px 0;
+            opacity: 0.85;
+            display: inline-block;
+            font-size: 17px;
+            line-height: 20px;
+            text-decoration: none; /* remove underline from anchors */
+        }
+        
+        input:hover,
+        .btn:hover {
+            opacity: 1;
+        }
+        
+        /* add appropriate colors to fb, twitter and google buttons */
+        .fb {
+            background-color: #3B5998;
+            color: white;
+        }
+        
+        .twitter {
+            background-color: #55ACEE;
+            color: white;
+        }
+        
+        .google {
+            background-color: #dd4b39;
+            color: white;
+        }
+        
+        /* style the submit button */
+        input[type=submit] {
+            background-color: rgb(255, 125, 0);
+            color: white;
+            cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+            transition-duration: 0.1s;
+            background-color: rgb(255, 90, 0);
+        }
+        
+        /* Two-column layout */
+        .col {
+            float: left;
+            width: 50%;
+            margin: auto;
+            padding: 0 50px;
+            margin-top: 6px;
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        /* vertical line */
+        .vl {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            border: 2px solid #ddd;
+            height: 175px;
+        }
+        
+        /* text inside the vertical line */
+        .vl-innertext {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 8px 10px;
+        }
+        
+        /* hide some text on medium and large screens */
+        .hide-md-lg {
+            display: none;
+        }
+        
+        /* bottom container */
+        .bottom-container {
+            text-align: center;
+            background-color: #666;
+            border-radius: 0px 0px 4px 4px;
+        }
+        
+        /* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 650px) {
+            .col {
+            width: 100%;
+            margin-top: 0;
+            }
+            /* hide the vertical line */
+            .vl {
+            display: none;
+            }
+            /* show the hidden text on small screens */
+            .hide-md-lg {
+            display: block;
+            text-align: center;
+            }
+        }
+
+                
+        .pagination{
+        padding: 0px 0px;
+        display: inline-block;
+        }
+
+        .pagination ul{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        }
+
+        .pagination a{
+        display: inline-block;
+        padding: 8px 18px;
+        color: #222;
+        }
+
+        .p11 a{
+        background-color: rgb(255, 125, 0);
+        color: #fff;
+        border: 3px solid rgb(255, 125, 0);
+        position: relative;
+        }
+
+        .p11 a:hover{
+            background-color: rgb(255, 90, 0);
+            border-color: rgb(255, 90, 0);
+        }
+        </style>
+
+    </head>
+    <body>
+        <%if(pageNum !=0) { %> <title>Orange | Page <%= pageNum %></title>
+        <% } %>
+        <% if(pageNum == 0) { %>
+            <title>Orange</title>
+        <% } %>
+        
+            <div class="header">
+            <div class='headText'><small style="background-color: rgb(255,100,0);color: white;padding-left: 15px;padding-right: 15px;border-radius: 10%;margin-right: 2px;padding-top: 8px;">O</small>range</div>
+            <div class='headFooter'>The only <span style="color:rgb(255,100,0)">Forum</span> you'll need.</div>
+            <div class='anim'>.</div><div class='anim2'>.</div>
+        </div>
+        <div class='navbar'>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/compose">Compose</a></li>
+            <li class='loginClass'><a href="/signup">Sign Up</a></li>
+            <li class="loginClass"><a href="/login"> Login</a></li>
+          </ul>
+        </div><br><br>
+
+
+<!-- Make the count system faster by eliminating it-->
         <div class="body">
+            <% let count = 0;%>
+            <% let postNumber = 0; %>
             <% posts2.slice().reverse().forEach(function(post){ %>
+                <% count++; %>
+                <% if(count > (pageNum*10) && count <= ((pageNum+1)*10)) { %>
+                <% postNumber++; %>
                 <% let postID = post._id; %>
                 <% let first = "/posts/"; %>
                 <% let postUrl = first.concat(postID); %>
@@ -19,7 +461,22 @@
                 <%= str3 %>
                 <% } %>
             </a>
+            <% } %>
             <%  }); %>
+            <div class="pagination p11">
+                <ul>
+                    <% let first2 = "/pages/"; %>
+                    <% let nextPage = Number(pageNum) + 1; %>
+                    <% let prevPage = Number(pageNum) - 1; %>
+                    <% if(postNumber < 10){ nextPage = pageNum;} %>
+                    <% if(prevPage == -1){ prevPage = 0} %>
+                    <% let next = first2.concat(nextPage); %>
+                    <% let prev = first2.concat(prevPage); %>
+                    <% if(prev = '/pages/0') {prev = '/';} %>
+                  <a href=<%= prev %> ><li>Previous</li></a>
+                  <a href=<%= next %> ><li>Next</li></a>
+                </ul>
+            </div>
             <a href="/compose" class='add'>+</a>
         </div><br><br>
 

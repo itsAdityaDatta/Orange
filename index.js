@@ -34,7 +34,19 @@ app.listen(port,function(){
 app.get("/",function(req,res){
     Post.find({}, function(err, posts3){                //posts3 is an array of posts, example : To access title of first post posts3[0].title
         res.render("home", {
-          posts2: posts3
+          posts2: posts3,
+          pageNum: 0
+          });
+     
+      });
+});
+
+app.get("/pages/:pageNum",function(req,res){
+    let pageNum = (req.params.pageNum);
+    Post.find({}, function(err, posts3){                //posts3 is an array of posts, example : To access title of first post posts3[0].title
+        res.render("home", {
+          posts2: posts3,
+          pageNum: pageNum
           });
      
       });
@@ -70,6 +82,11 @@ app.post("/compose",function(req,res){
         }
     });
 });
+
+app.get("/login",function(req,res){
+    res.render('login');
+});
+
 
 app.get("/posts/:postID", function(req,res){
     const str1 = (req.params.postID);

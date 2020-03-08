@@ -104,7 +104,7 @@
             margin-left: auto;
             white-space: pre-line;
             overflow-x: hidden;
-            margin-top: 30px;
+            margin-top: 20px;
             font-size: 16px;
             font-family: 'Open Sans', sans-serif;
 
@@ -112,12 +112,13 @@
 
         .postsTitles{
             font-family: 'Abel', sans-serif;
-            font-size: 40px;
+            font-size: 24px;
             background-color:  rgb(255, 125, 0);
             color: white;
             display: inline-block;
+            padding: 5px;
             padding-left: 250px;
-            padding-right: 200px;
+            padding-right: 100px;
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
             transform: translateX(-200px);
@@ -131,20 +132,24 @@
 
         @media screen and (max-width: 800px) {
             .navbar ul li.right, 
-            .navbar ul li {float: none;}
+            /* .navbar ul li {float: none;} */
             .navbar ul li a{
                 padding: 6px 12px;
                 border-bottom: 1px solid black;
             }
             .navbar {
-                position: relative;
+                /* position: relative; */
+            }
+            .footer{
+                /* position: relative; */
             }
             .postsTitles{
-                font-size: 26px;
+                font-size: 22px;
                 padding: 10px;
                 padding-left: 230px;
-                padding-right: 10px;
-                width: 110%;
+                padding-right: 50px;
+                width: 90%;
+                border-radius: 0px;
             }
             body{
                 overflow-x: hidden;
@@ -198,6 +203,8 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">About us</a></li>
             <li><a href="/compose">Compose</a></li>
+            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
           <br><br><br><br>
