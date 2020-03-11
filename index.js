@@ -11,6 +11,9 @@ const postSchema = new mongoose.Schema({
   },
   matter: {
     type : String
+  },
+  views: {
+    type : Number
   }
 });
 
@@ -28,29 +31,29 @@ if(port == null || port == ""){
 }
 
 app.listen(port,function(){
-    console.log('Server has started successfully');
+    console.log('Server started on port : ', port);
 });
 
 app.get("/",function(req,res){
     Post.find({}, function(err, posts3){                //posts3 is an array of posts, example : To access title of first post posts3[0].title
         res.render("home", {
           posts2: posts3,
-          pageNum: 0
+          pageNum: 0,
           });
      
       });
 });
 
-app.get("/pages/:pageNum",function(req,res){
-    let pageNum = (req.params.pageNum);
-    Post.find({}, function(err, posts3){                //posts3 is an array of posts, example : To access title of first post posts3[0].title
-        res.render("home", {
-          posts2: posts3,
-          pageNum: pageNum
-          });
+// app.get("/pages/:pageNum",function(req,res){
+//     let pageNum = (req.params.pageNum);
+//     Post.find({}, function(err, posts3){                //posts3 is an array of posts, example : To access title of first post posts3[0].title
+//         res.render("home", {
+//           posts2: posts3,
+//           pageNum: pageNum
+//           });
      
-      });
-});
+//       });
+// });
 
 app.get("/about",function(req,res){
     res.render('about',{
@@ -66,10 +69,12 @@ app.post("/compose",function(req,res){
     let post = {
         matter : req.body.postMatter,
         title : req.body.postTitle,
+        views : 0
     }
     const post2 = new Post({
         title: post.title,
-        matter: post.matter
+        matter: post.matter,
+        views : post.views
     });
 
     post2.save(function(err){
@@ -97,14 +102,18 @@ app.get("/posts/:postID", function(req,res){
                 res.render('post',{
                     pageTitle : post.title,
                     title : post.title,
-                    body : post.matter
+                    body : post.matter,
+                });
+                post.views = post.views + 1;
+                post.save(function(err){
+                    if(err){
+                        console.log(err);
+                        window.alert('An error has occured.');
+                    }
                 });
             }
         });
-     
     });
-
-
 });
 
 

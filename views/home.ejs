@@ -5,23 +5,14 @@
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Handlee&display=swap" rel="stylesheet">
-
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        
         <style>
         html{
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
         body{
             margin: 0;
-        }
-
-        .body{
-            font-family: 'Open Sans', sans-serif;
-            display: block;
-            width: 90%;
-            margin-right: auto;
-            margin-left: auto;
-            margin-bottom: 60px;
         }
 
         .header{
@@ -169,7 +160,6 @@
         .posts{
             background-color: #e5e5e5;
             display: block;
-            overflow-x: hidden;
             font-size: 14px;
             padding: 15px;
             margin-bottom: 15px;
@@ -381,34 +371,73 @@
             }
         }
 
-                
-        .pagination{
-        padding: 0px 0px;
-        display: inline-block;
+        #back2Top {
+            width: 80px;
+            line-height: 40px;
+            overflow: hidden;
+            z-index: 999;
+            display: none;
+            cursor: pointer;
+            -moz-transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+            position: fixed;
+            bottom: 60px;
+            right : -20px;
+            background-color: #DDD;
+            color: #555;
+            text-align: center;
+            font-size: 30px;
+            text-decoration: none;
+        }
+        #back2Top:hover {
+            background-color: #DDF;
+            color: #000;
+        }
+        .views{
+            font-size: 14px;
+            float: right;
         }
 
-        .pagination ul{
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
+        .bodyParent{
+            margin-left: auto;
+            width: 90%;
+            position: relative;
+        }
+        .body{
+            font-family: 'Open Sans', sans-serif;
+            width: 60%;
+            margin-bottom: 60px;
+            float: left;
+        }
+        .hotPosts{
+            width: 30%;
+            display: block;
+            border: 1.5px solid rgb(255, 90, 0);
+            margin-left: 20px;
+            float: left;
+            padding: 15px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+
+        
+        }
+        .posts2{
+            background-color: #e5e5e5;
+            display: block;
+            font-size: 14px;
+            padding: 15px;
+            margin-bottom: 10px;
+            font-family: 'Open Sans', sans-serif;
+            border: 1px solid #e5e5e5;
         }
 
-        .pagination a{
-        display: inline-block;
-        padding: 8px 18px;
-        color: #222;
-        }
-
-        .p11 a{
-        background-color: rgb(255, 125, 0);
-        color: #fff;
-        border: 3px solid rgb(255, 125, 0);
-        position: relative;
-        }
-
-        .p11 a:hover{
-            background-color: rgb(255, 90, 0);
-            border-color: rgb(255, 90, 0);
+        .posts2:hover{
+            transition-duration: 0.1s;
+            background-color: #ddd;
         }
         </style>
 
@@ -437,49 +466,84 @@
 
 
 <!-- Make the count system faster by eliminating it-->
-        <div class="body">
-            <% let count = 0;%>
-            <% let postNumber = 0; %>
-            <% posts2.slice().reverse().forEach(function(post){ %>
-                <% count++; %>
-                <% if(count > (pageNum*10) && count <= ((pageNum+1)*10)) { %>
-                <% postNumber++; %>
-                <% let postID = post._id; %>
-                <% let first = "/posts/"; %>
-                <% let postUrl = first.concat(postID); %>
-            <a class="posts"  href= <%= postUrl %> >        
-                <div class='postsTitles'>
-                    <%= post.title %>
-                </div>
-                <% let str = post.matter; %>
-                <% let str2 = str.substring(0, 300); %>
-                <% if(str.length < 200){ %>
-                <%= str2 %>
-                <% } %>
-                <% if(str.length > 200) { %>
-                <% let str3 = str2.concat('','...'); %>
-                <%= str3 %>
-                <% } %>
-            </a>
-            <% } %>
-            <%  }); %>
-            <div class="pagination p11">
-                <ul>
-                    <% let first2 = "/pages/"; %>
-                    <% let nextPage = Number(pageNum) + 1; %>
-                    <% let prevPage = Number(pageNum) - 1; %>
-                    <% if(postNumber < 10){ nextPage = pageNum;} %>
-                    <% if(prevPage == -1){ prevPage = 0} %>
-                    <% let next = first2.concat(nextPage); %>
-                    <% let prev = first2.concat(prevPage); %>
-                    <% if(prev = '/pages/0') {prev = '/';} %>
-                  <a href=<%= prev %> ><li>Previous</li></a>
-                  <a href=<%= next %> ><li>Next</li></a>
-                </ul>
-            </div>
-            <a href="/compose" class='add'>+</a>
-        </div><br><br>
+       <div class='bodyParent'>
+            <div class="body">
+                <% posts2.slice().reverse().forEach(function(post){ %>
+                    <% let postID = post._id; %>
+                    <% let first = "/posts/"; %>
+                    <% let postUrl = first.concat(postID); %>
+                <a class="posts"  href= <%= postUrl %> >        
+                    <div class='postsTitles'>
+                        <%= post.title %>
+                        <div class ='views'>
+                            views : <%= post.views %>
+                        </div>
+                    </div>
+                    <% let str = post.matter; %>
+                    <% let str2 = str.substring(0, 300); %>
+                    <% if(str.length < 200){ %>
+                    <%= str2 %>
+                    <% } %>
+                    <% if(str.length > 200) { %>
+                    <% let str3 = str2.concat('','...'); %>
+                    <%= str3 %>
+                    <% } %>
+                </a>
+                <% }); %>
 
+                <a href="/compose" class='add'>+</a>
+                <a id="back2Top" href="#">&#10148;</a>
+            </div>
+            <div class="hotPosts">
+                <% let posts3 = posts2.slice().sort(function(a,b){return (b.views-a.views);}); %>
+                <% for(let i=0;i<=5;i++){ %>
+                    <% let postID = posts3[i]._id; %>
+                    <% let first = "/posts/"; %>
+                    <% let postUrl = first.concat(postID); %>
+                    <a class="posts2"  href= <%= postUrl %> >        
+                        <div class='postsTitles'>
+                            <%= posts3[i].title %>
+                            <div class ='views'>
+                                views : <%= posts3[i].views %>
+                            </div>
+                        </div>
+                        <% let str = posts3[i].matter; %>
+                        <% let str2 = str.substring(0, 300); %>
+                        <% if(str.length < 200){ %>
+                        <%= str2 %>
+                        <% } %>
+                        <% if(str.length > 200) { %>
+                        <% let str3 = str2.concat('','...'); %>
+                        <%= str3 %>
+                        <% } %>
+                    </a>
+                <% }; %>
+            </div>
+
+        </div> 
+        
+        
+        <br><br>
+
+        <script>
+           $(window).scroll(function() {
+                var height = $(window).scrollTop();
+                if (height > 100) {
+                    $('#back2Top').fadeIn();
+                } else {
+                    $('#back2Top').fadeOut();
+                }
+            });
+            $(document).ready(function() {
+                $("#back2Top").click(function(event) {
+                    event.preventDefault();
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    return false;
+                });
+
+            });
+ 
+         </script>
 
 <%- include('partials/footer'); -%>
    
