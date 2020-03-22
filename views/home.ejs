@@ -10,6 +10,7 @@
         <style>
         html{
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         body{
             margin: 0;
@@ -32,17 +33,17 @@
 
         .headFooter{
             font-family: 'Montserrat', sans-serif;
-            color: #333;
+            color: black;
             padding-top: 10px;
         }
 
         .navbar{
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0px;
-        z-index: 2;
-        background-color: #333;
-        font-size: 14px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0px;
+            z-index: 20;
+            background-color: #333;
+            font-size: 14px;
         }
 
         .navbar ul {
@@ -71,6 +72,7 @@
         
         .navbar li a:hover {
             background-color: rgb(255, 125, 0);
+            color: white;
         }
         .footer {
             position: fixed;
@@ -78,7 +80,7 @@
             bottom: 0;
             width: 100%;
             text-align: center;
-            font-size: 16px;
+            font-size: 12px;
             padding: 2px;
             background-color: #333;
             color: white;
@@ -144,7 +146,7 @@
             background-color: white;
             font-size: 20px;
             font-family: 'Abel', sans-serif;
-            border: 1.5px solid rgb(255, 125, 0);
+            border:1.5 px solid rgb(255, 125, 0);
             border-radius: 5px;
             padding-left: 25px;
             padding-right: 25px;
@@ -158,13 +160,13 @@
         }
 
         .posts{
-            background-color: #e5e5e5;
+            background-color: rgb(229, 229, 241);
             display: block;
             font-size: 14px;
             padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-family: 'Open Sans', sans-serif;
-            border: 1px solid #e5e5e5;
+            border: 1px solid rgb(240,240,250);
 
         }
 
@@ -201,31 +203,13 @@
             background-color: rgb(255, 90, 0);
         }
 
-        @media screen and (max-width: 800px) {
-            .navbar ul li.right, 
-            /* .navbar ul li {float: none;} */
-            .navbar ul li a{
-                padding: 6px 12px;
-                border-bottom: 1px solid black;
-            }
-
-            
-        }
-            @media screen and (max-width: 1000px) {
-                .anim{
-                    display: none !important;
-                }
-                .anim2{
-                    display: none !important;
-                }
-            }
                 
             .anim {
                 background-color: rgb(255, 90, 0);
                 display: inline-block;
                 height: 10px;
                 width: 400px;
-                color: rgb(240,240,250);
+                color: #ffac14;
                 transform: translateY(-50px) translateX(570px) rotateZ(-50deg);
             }
 
@@ -238,9 +222,6 @@
                 transform: translateY(-50px) translateX(200px) rotateZ(-50deg);
             }
 
-            .loginClass{
-            
-            }
 
         /* ________________________________________________________LOGIN FORM ______________________________________________________________*/
             
@@ -384,8 +365,8 @@
             -ms-transform: rotate(270deg);
             transform: rotate(270deg);
             position: fixed;
-            bottom: 60px;
-            right : -20px;
+            bottom: 50px;
+            right : -10px;
             background-color: #DDD;
             color: #555;
             text-align: center;
@@ -403,41 +384,103 @@
 
         .bodyParent{
             margin-left: auto;
+            margin-right: auto;
             width: 90%;
-            position: relative;
+            margin-top: 30px;
         }
         .body{
             font-family: 'Open Sans', sans-serif;
-            width: 60%;
+            width: 68%;
             margin-bottom: 60px;
             float: left;
         }
         .hotPosts{
             width: 30%;
-            display: block;
-            border: 1.5px solid rgb(255, 90, 0);
+            border: 2px solid rgb(255, 90, 0);
             margin-left: 20px;
             float: left;
-            padding: 15px;
-            position: -webkit-sticky;
-            position: sticky;
+            padding: 10px;
             top: 100px;
-
-        
+            border-radius: 5px;        
         }
         .posts2{
-            background-color: #e5e5e5;
+            background-color: rgb(229, 229, 241);
             display: block;
             font-size: 14px;
             padding: 15px;
             margin-bottom: 10px;
+            transform: translateY(-25px);
             font-family: 'Open Sans', sans-serif;
-            border: 1px solid #e5e5e5;
+            border: 1px solid rgb(240,240,250);
+        }
+
+        .posts2:last-child{
+            margin-bottom: -25px;
         }
 
         .posts2:hover{
             transition-duration: 0.1s;
             background-color: #ddd;
+        }
+
+        .hotPostsHeading{
+            transform: translateY(-30px);
+            background-color: white;
+            display: inline-block;
+            color: black;
+            font-size: 30px;
+            font-family: 'Abel';
+        }
+        @media screen and (max-width: 800px) {
+            .navbar ul li.right, 
+            /* .navbar ul li {float: none;} */
+            .navbar ul li a{
+                padding: 6px 12px;
+                border-bottom: 1px solid black;
+            }
+            .hotPosts{
+                clear: left;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                margin-bottom: 100px;
+                
+            }
+            .body{
+                float: left;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+            }
+            
+        }
+        @media screen and (max-width: 1200px) {
+            .anim{
+                display: none !important;
+            }
+            .anim2{
+                display: none !important;
+            }
+            .hotPosts{
+                clear: left;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                margin-bottom: 100px;
+                
+            }
+            .body{
+                float: left;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+            }
+
+            
+        }
+
+        .matter{
+            white-space: pre-line;
         }
         </style>
 
@@ -450,9 +493,9 @@
         <% } %>
         
             <div class="header">
-            <div class='headText'><small style="background-color: rgb(255,100,0);color: white;padding-left: 15px;padding-right: 15px;border-radius: 10%;margin-right: 2px;padding-top: 8px;">O</small>range</div>
-            <div class='headFooter'>The only <span style="color:rgb(255,100,0)">Forum</span> you'll need.</div>
-            <div class='anim'>.</div><div class='anim2'>.</div>
+                <div class='headText'><small style="background-color: rgb(255,100,0);color: white;padding-left: 15px;padding-right: 15px;border-radius: 10%;margin-right: 2px;padding-top: 8px;">O</small>range</div>
+                <div class='headFooter'>The only <span style="color:rgb(255,100,0)">Forum</span> you'll need.</div>
+                <div class='anim'>.</div><div class='anim2'>.</div>
         </div>
         <div class='navbar'>
           <ul>
@@ -482,7 +525,7 @@
                     <% let str = post.matter; %>
                     <% let str2 = str.substring(0, 300); %>
                     <% if(str.length < 200){ %>
-                    <%= str2 %>
+                    <div class='matter'><%= str2 %></div>
                     <% } %>
                     <% if(str.length > 200) { %>
                     <% let str3 = str2.concat('','...'); %>
@@ -495,7 +538,35 @@
                 <a id="back2Top" href="#">&#10148;</a>
             </div>
             <div class="hotPosts">
+                <div class='hotPostsHeading'>Hot Posts</div>
                 <% let posts3 = posts2.slice().sort(function(a,b){return (b.views-a.views);}); %>
+                <% if(posts3.length <= 5) {%>
+                    <% for(let i=0;i<posts3.length;i++){ %>
+                        <% let postID = posts3[i]._id; %>
+                        <% let first = "/posts/"; %>
+                        <% let postUrl = first.concat(postID); %>
+                        <a class="posts2"  href= <%= postUrl %> >        
+                            <div class='postsTitles'>
+                                <%= posts3[i].title %>
+                                <div class ='views'>
+                                    views : <%= posts3[i].views %>
+                                </div>
+                            </div>
+                            <% let str = posts3[i].matter; %>
+                            <% let str2 = str.substring(0, 300); %>
+                            <% if(str.length < 200){ %>
+                            <div class='matter'><%= str2 %></div>
+                            <% } %>
+                            <% if(str.length > 200) { %>
+                            <% let str3 = str2.concat('','...'); %>
+                            <%= str3 %>
+                            <% } %>
+                        </a>
+                    <% }; %>
+                    <% }; %>
+
+
+                <% if(posts3.length > 5) { %>
                 <% for(let i=0;i<=5;i++){ %>
                     <% let postID = posts3[i]._id; %>
                     <% let first = "/posts/"; %>
@@ -510,7 +581,7 @@
                         <% let str = posts3[i].matter; %>
                         <% let str2 = str.substring(0, 300); %>
                         <% if(str.length < 200){ %>
-                        <%= str2 %>
+                        <div class='matter'><%= str2 %></div>
                         <% } %>
                         <% if(str.length > 200) { %>
                         <% let str3 = str2.concat('','...'); %>
@@ -518,10 +589,10 @@
                         <% } %>
                     </a>
                 <% }; %>
+                <% }; %>
             </div>
 
         </div> 
-        
         
         <br><br>
 
